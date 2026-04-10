@@ -1,0 +1,14 @@
+[project]
+name = "kz-finance"
+version = "0.1.0"
+description = "KZ SMB Financial Intelligence Platform - Bank statement parser and categorizer"
+requires-python = ">=3.11"
+dependencies = [
+    "click>=8.0",
+    "anthropic>=0.50",
+    "pdfplumber>=0.10",
+    "openpyxl>=3.1",
+]
+
+[project.scripts]
+kzf = "kz_finance.cli:main"

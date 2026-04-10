@@ -1,0 +1,27 @@
+.env
+.env.local
+.env.*.local
+**/.env.local
+*.db
+.venv/
+__pycache__/
+*.pyc
+.next/
+**/.next/
+node_modules/
+**/node_modules/
+google-credentials.json
+.DS_Store
+kzfinance.db
+/tmp/
+
+# IDE
+.vscode/
+.idea/
+
+# Tooling
+.gstack/
+
+# Sample bank statement PDFs - DO NOT COMMIT (contain real client data)
+*.pdf
+managerial_reports.xlsx

@@ -1,0 +1,776 @@
+{
+  "categories": [
+    {
+      "name": "Доход — Перевод между счетами",
+      "group": "Поступление",
+      "activity_type": "Техническая операция",
+      "description": "Поступление денег с нашего счета или другого кошелька",
+      "category_group": ""
+    },
+    {
+      "name": "Расход — Перевод между счетами",
+      "group": "Выбытие",
+      "activity_type": "Техническая операция",
+      "description": "Перевод денег на другой наш счет или кошелёк",
+      "category_group": ""
+    },
+    {
+      "name": "Поступление от реализации товаров",
+      "group": "Поступление",
+      "activity_type": "Операционная",
+      "description": "Поступление денег от предоставленной услуги, проектов",
+      "category_group": "Поступления ДС"
+    },
+    {
+      "name": "Возврат товара",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "",
+      "category_group": "Поступления ДС"
+    },
+    {
+      "name": "З/п директора",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "з/п Камиллы",
+      "category_group": "Расходы на сотрудников"
+    },
+    {
+      "name": "З/п менеджеров по продажам",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "з/п менеджеров по продажам",
+      "category_group": "Расходы на сотрудников"
+    },
+    {
+      "name": "Бонусы менеджеров по продажам",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "бонусы менеджеров по продажам",
+      "category_group": "Расходы на сотрудников"
+    },
+    {
+      "name": "Расходы на закуп",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Закуп товара",
+      "category_group": "Расходы на товар"
+    },
+    {
+      "name": "Доставка по городу",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Расходы за доставку по городу",
+      "category_group": "Расходы на бизнес"
+    },
+    {
+      "name": "Расходы на упаковку",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Расходы на упаковку",
+      "category_group": "Расходы на товар"
+    },
+    {
+      "name": "Расходы на фотосессию",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Расходы на фотосессию",
+      "category_group": "Коммерческие расходы"
+    },
+    {
+      "name": "Расходы на таргет",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Расходы на таргет",
+      "category_group": "Коммерческие расходы"
+    },
+    {
+      "name": "Расходы на маркетинг",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Расходы на блоггеров и тд",
+      "category_group": "Коммерческие расходы"
+    },
+    {
+      "name": "Представительские расходы-производство",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "подарки, бонусы",
+      "category_group": "Расходы на содержание магазина"
+    },
+    {
+      "name": "IT инфраструктура-адм",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Клаудшоп, CRM",
+      "category_group": "Расходы на бизнес"
+    },
+    {
+      "name": "Прочие административные расходы",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "вода, сладости",
+      "category_group": "Расходы на содержание магазина"
+    },
+    {
+      "name": "Услуга связи",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "интернет, моб.связь",
+      "category_group": "Расходы на содержание магазина"
+    },
+    {
+      "name": "Комиссия банка",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Комиссия, обслуживание банка",
+      "category_group": "Расходы на бизнес"
+    },
+    {
+      "name": "Консультационные и проф услуги",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Найм персонала, hh,  TOO Finpark",
+      "category_group": "Расходы на бизнес"
+    },
+    {
+      "name": "Услуги бухгалтера",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Оплата бухгалтеру",
+      "category_group": "Расходы на сотрудников"
+    },
+    {
+      "name": "Налоги на ФОТ",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Оплата налогов на заработную плату (ОПВ, ИПН, восмс, осмс, соц отчисления, соц налоги)",
+      "category_group": "Расходы на сотрудников"
+    },
+    {
+      "name": "Налоги на прибыль",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Оплата налогов КПН на ТОО",
+      "category_group": "Расходы на бизнес"
+    },
+    {
+      "name": "Коммунальные услуги",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Оплата коммунальных услуг",
+      "category_group": "Расходы на содержание магазина"
+    },
+    {
+      "name": "Командировочные расходы",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Расходы на билеты, проживание, питание",
+      "category_group": "Расходы на бизнес"
+    },
+    {
+      "name": "Расходы за доставку до Казахстана",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Расходы с Китая до Казахстана",
+      "category_group": "Расходы на товар"
+    },
+    {
+      "name": "Расходы на открытие новой точки",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Расходы связанные с открытием новой точки",
+      "category_group": "Расходы на бизнес"
+    },
+    {
+      "name": "Налог на имущество",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Для Астаны",
+      "category_group": "Расходы на бизнес"
+    },
+    {
+      "name": "Вклады от собственников",
+      "group": "Поступление",
+      "activity_type": "Финансовая",
+      "description": "Собственник вложил деньги в бизнес",
+      "category_group": ""
+    },
+    {
+      "name": "Дивиденды",
+      "group": "Выбытие",
+      "activity_type": "Финансовая",
+      "description": "Выплата дивидендов собственникам",
+      "category_group": ""
+    },
+    {
+      "name": "Займы",
+      "group": "Поступление",
+      "activity_type": "Финансовая",
+      "description": "Вклад Инвестиции в бизнес",
+      "category_group": ""
+    },
+    {
+      "name": "Возврат Займа",
+      "group": "Выбытие",
+      "activity_type": "Финансовая",
+      "description": "Возврат займа",
+      "category_group": ""
+    },
+    {
+      "name": "Продажа ОС",
+      "group": "Поступление",
+      "activity_type": "Инвестиционная",
+      "description": "Продажа мебели, техники",
+      "category_group": ""
+    },
+    {
+      "name": "Покупка ОС",
+      "group": "Выбытие",
+      "activity_type": "Инвестиционная",
+      "description": "Покупка мебели, техники",
+      "category_group": ""
+    },
+    {
+      "name": "Ремонт ОС",
+      "group": "Выбытие",
+      "activity_type": "Инвестиционная",
+      "description": "Расходы на ремонтные работы ОС",
+      "category_group": ""
+    },
+    {
+      "name": "Вложения в ОС",
+      "group": "Выбытие",
+      "activity_type": "Инвестиционная",
+      "description": "Покупка частями ОС",
+      "category_group": ""
+    },
+    {
+      "name": "Расходы на ремонт помещения",
+      "group": "Выбытие",
+      "activity_type": "Инвестиционная",
+      "description": "Расходы на ремонт собственного помещения",
+      "category_group": ""
+    },
+    {
+      "name": "Пеня за налоги и %",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "выплаты пений",
+      "category_group": "Расходы на бизнес"
+    },
+    {
+      "name": "З/п управляющего",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "зарплата Акниет",
+      "category_group": "Расходы на сотрудников"
+    },
+    {
+      "name": "Бонусы управляющего",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "бонусы Акниет",
+      "category_group": "Расходы на сотрудников"
+    },
+    {
+      "name": "Расходы на страхование помещения",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "",
+      "category_group": "Расходы на содержание магазина"
+    },
+    {
+      "name": "Доход от неоперационной деятельности",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "",
+      "category_group": "Расходы на бизнес"
+    },
+    {
+      "name": "Непредвиденные расходы",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "",
+      "category_group": "Расходы на бизнес"
+    },
+    {
+      "name": "З/п ОМ",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "услуги таргетолога, СММ специалиста, мобилогрофа",
+      "category_group": "Расходы на сотрудников"
+    },
+    {
+      "name": "Закуп коробок",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "Расходы на коробки (боксы)",
+      "category_group": "Расходы на товар"
+    },
+    {
+      "name": "Закуп инвентаря",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "",
+      "category_group": "Расходы на бизнес"
+    },
+    {
+      "name": "% по кредитам",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "",
+      "category_group": "Расходы на бизнес"
+    },
+    {
+      "name": "Эквайринг, % за рассрочку",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "",
+      "category_group": "Расходы на бизнес"
+    },
+    {
+      "name": "Продажа сертификатов",
+      "group": "Поступление",
+      "activity_type": "Операционная",
+      "description": "Продажи с продажи сертификатов",
+      "category_group": "Поступления ДС"
+    },
+    {
+      "name": "Курсовая разница",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "",
+      "category_group": "Расходы на бизнес"
+    },
+    {
+      "name": "Расходы на пошив одежды",
+      "group": "Выбытие",
+      "activity_type": "Операционная",
+      "description": "закуп ткани, фурнитуры, пошив",
+      "category_group": "Расходы на товар"
+    }
+  ],
+  "rules": [
+    {
+      "field": "payment_description",
+      "pattern": "ОС",
+      "category": "Покупка ОС"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "зп директора",
+      "category": "З/п директора"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "покупка ос",
+      "category": "Покупка ОС"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "зп акниет",
+      "category": "З/п управляющего"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "бонусы менеджера",
+      "category": "Бонусы менеджеров по продажам"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "закуп товара",
+      "category": "Расходы на закуп"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "доставка астана",
+      "category": "Доставка по городу"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "доставка крг",
+      "category": "Доставка по городу"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "зарплата менеджера",
+      "category": "З/п менеджеров по продажам"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "зп дир",
+      "category": "З/п директора"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Продажи с Kaspi.kz",
+      "category": "Поступление от реализации товаров"
+    },
+    {
+      "field": "counterparty",
+      "pattern": "НАО \"Государственная корпорация \"Правительство для граждан\" БИН/ИИН 160440007161",
+      "category": "Налоги на ФОТ"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "таргет",
+      "category": "Расходы на таргет"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "зп менеджера",
+      "category": "З/п менеджеров по продажам"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "товар",
+      "category": "Расходы на закуп"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "доставка с китая",
+      "category": "Расходы за доставку до Казахстана"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "бонус акниет",
+      "category": "Бонусы управляющего"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "ольга",
+      "category": "Услуги бухгалтера"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "расход",
+      "category": "Представительские расходы-производство"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "интернет",
+      "category": "Услуга связи"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "ком услуги",
+      "category": "Коммунальные услуги"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "доставка по городу",
+      "category": "Доставка по городу"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "расход перевод",
+      "category": "Расход — Перевод между счетами"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "доход перевод",
+      "category": "Доход — Перевод между счетами"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "мерч алматы",
+      "category": "Расходы на маркетинг"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "упаковка",
+      "category": "Расходы на упаковку"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Перевод собственных средств на карту Kaspi Gold",
+      "category": "Расход — Перевод между счетами"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Оплата услуги по обработке данных",
+      "category": "Комиссия банка"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Возврат продаж с Kaspi.kz",
+      "category": "Возврат товара"
+    },
+    {
+      "field": "counterparty",
+      "pattern": "НАО \"Государственная корпорация «Правительство для граждан\"",
+      "category": "Налоги на ФОТ"
+    },
+    {
+      "field": "counterparty",
+      "pattern": "ИП «Сванова Айнур Турсунбековна» БИН/ИИН 750120402724",
+      "category": "Консультационные и проф услуги"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "нал крг",
+      "category": "Расход — Перевод между счетами"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Оплата за информационно- технологические услуги",
+      "category": "Комиссия банка"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Возврат оплаты за информационно- технологические услуги.",
+      "category": "Комиссия банка"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Оплата за услуги операций по картам Kaspi Gold и другим картам",
+      "category": "Комиссия банка"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Снятия наличных в Kaspi Банкомат",
+      "category": "Расходы за доставку до Казахстана"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Социальные отчисления за",
+      "category": "Налоги на ФОТ"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Погашение комиссии за ведение счета (абонентская плата)",
+      "category": "Комиссия банка"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Возврат оплаты за услуги по обработке данных",
+      "category": "Комиссия банка"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "обзоры",
+      "category": "Расходы на фотосессию"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "возврат займа бцк",
+      "category": "Возврат Займа"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Комиссия за снятия наличных",
+      "category": "Комиссия банка"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Единый платеж за",
+      "category": "Налоги на ФОТ"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Перевод собственных средств на свой счет в другом Банке",
+      "category": "Расход — Перевод между счетами"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Комиссия за снятия наличных в Kaspi Банкомат кнп 841",
+      "category": "Комиссия банка"
+    },
+    {
+      "field": "counterparty",
+      "pattern": "Частная компания \"Finpeak Ltd\"",
+      "category": "Консультационные и проф услуги"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Перевод со своего Kaspi Gold на счет в Kaspi Pay кнп 342",
+      "category": "Доход — Перевод между счетами"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "\"Интертич Медицинский Ассистанс\"",
+      "category": "З/п директора"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Медеу маркет",
+      "category": "З/п директора"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "квартира",
+      "category": "Представительские расходы-производство"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "купальник",
+      "category": "Поступление от реализации товаров"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "\"Интертич Медицинский Ассистанс\" МЦ No2. Оплата с Kaspi QR кнп 190",
+      "category": "З/п директора"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "пакеты",
+      "category": "Расходы на упаковку"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "билеты",
+      "category": "Командировочные расходы"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "скотч",
+      "category": "Прочие административные расходы"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "cвет",
+      "category": "Представительские расходы-производство"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Перевод собственных средств на свой счет в другом Банке.",
+      "category": "Возврат Займа"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Погашение комиссии за ведение счета",
+      "category": "Комиссия банка"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Возврат оплаты за услуги операций по картам",
+      "category": "Комиссия банка"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "примерочная",
+      "category": "Прочие административные расходы"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "зарядка",
+      "category": "Покупка ОС"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "командировка",
+      "category": "Командировочные расходы"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "фотосессия",
+      "category": "Расходы на фотосессию"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "ОБУЧЕНИЕ",
+      "category": "Представительские расходы-производство"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "таргетолог",
+      "category": "Расходы на таргет"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "клауд шоп",
+      "category": "IT инфраструктура-адм"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Miras Store. Оплата с Kaspi QR кнп 190",
+      "category": "З/п директора"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "ИП \"Магда Б.С.\". Оплата с Kaspi QR кнп 190",
+      "category": "З/п директора"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Комиссия банка",
+      "category": "Комиссия банка"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "административные расходы",
+      "category": "Прочие административные расходы"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "модель",
+      "category": "Расходы на фотосессию"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "дивиденды",
+      "category": "Дивиденды"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Перевод со счета KaspiPay на Депозит U36429983-001",
+      "category": "Расход — Перевод между счетами"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Перевод",
+      "category": "Расход — Перевод между счетами"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Пополнение",
+      "category": "Доход — Перевод между счетами"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Вознаграждение",
+      "category": "Доход от неоперационной деятельности"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Снятия наличных",
+      "category": "Расходы за доставку до Казахстана"
+    },
+    {
+      "field": "counterparty",
+      "pattern": "Услуги таргетолога",
+      "category": "З/п ОМ"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Таргетолог",
+      "category": "З/п ОМ"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "ИПН с доходов, не облагаемых у источника выплаты",
+      "category": "Налоги на прибыль"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Частичный возврат единого платежа",
+      "category": "Налоги на ФОТ"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Налог на имущество",
+      "category": "Налог на имущество"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Доставка до кз",
+      "category": "Расходы за доставку до Казахстана"
+    },
+    {
+      "field": "payment_description",
+      "pattern": "Оплата заработной платы",
+      "category": "З/п менеджеров по продажам"
+    }
+  ]
+}
