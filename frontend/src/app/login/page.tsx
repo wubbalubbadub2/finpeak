@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
-import { Wallet, Mail, Lock, AlertCircle } from "lucide-react";
+import { Mail, Lock, AlertCircle } from "lucide-react";
+import { LogoMark } from "@/components/Logo";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -36,10 +37,12 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="flex flex-col items-center mb-8">
-          <div className="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-200 mb-3">
-            <Wallet size={26} className="text-white" />
+          <div className="mb-3 shadow-xl shadow-indigo-200 rounded-2xl">
+            <LogoMark size={56} />
           </div>
-          <h1 className="text-2xl font-bold text-gray-800">KZ Finance</h1>
+          <h1 className="text-2xl font-bold text-gray-900 tracking-tight">
+            Fin<span className="text-indigo-600">Peak</span>
+          </h1>
           <p className="text-sm text-gray-500 mt-1">Финансовая аналитика для бизнеса</p>
         </div>
 
@@ -105,7 +108,7 @@ export default function LoginPage() {
         </div>
 
         <p className="mt-6 text-xs text-gray-400 text-center">
-          KZ Finance &copy; 2026
+          FinPeak &copy; 2026
         </p>
       </div>
     </div>

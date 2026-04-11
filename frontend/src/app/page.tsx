@@ -87,7 +87,7 @@ export default function DashboardPage() {
       </div>
 
       {/* KPI Strip - 4 cards focused on CURRENT state */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 lg:gap-4 mb-6">
         <KPICard
           label="Текущий баланс"
           value={fmt(runway.balance || 0)}

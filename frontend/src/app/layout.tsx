@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "KZ Finance",
+  title: "FinPeak",
   description: "Финансовая аналитика для малого бизнеса",
 };
 

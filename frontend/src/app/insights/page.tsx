@@ -39,7 +39,7 @@ export default function InsightsPage() {
       </div>
 
       {/* Cash Runway KPIs */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-5">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 lg:gap-4 mb-5">
         <RunwayCard icon={<Wallet size={18} />} iconBg="bg-emerald-50" iconColor="text-emerald-600" label="Текущий баланс" value={fmt(runway.balance)} suffix="₸" valueClass={runway.balance >= 0 ? "text-emerald-600" : "text-red-600"} />
         <RunwayCard icon={<TrendingUp size={18} />} iconBg="bg-indigo-50" iconColor="text-indigo-600" label="Ср. месячный нетто" value={fmt(runway.avg_monthly_net)} suffix="₸" valueClass={runway.avg_monthly_net >= 0 ? "text-emerald-600" : "text-red-600"} />
         <RunwayCard icon={<Flame size={18} />} iconBg="bg-orange-50" iconColor="text-orange-600" label="Ср. расход / мес" value={fmt(runway.burn_rate)} suffix="₸" valueClass="text-gray-800" />

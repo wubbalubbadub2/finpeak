@@ -80,7 +80,7 @@ export default function UploadPage() {
                 <p className="text-xs text-gray-400">{result.filename}</p>
               </div>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {([
                 ["Банк", result.bank.toUpperCase()],
                 ["Клиент", result.client_name || "—"],

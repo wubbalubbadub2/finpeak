@@ -127,7 +127,9 @@ export default function OnboardingPage() {
               <div className="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Sparkles size={28} className="text-indigo-600" />
               </div>
-              <h1 className="text-2xl font-bold text-gray-800 mb-2">Добро пожаловать в KZ Finance!</h1>
+              <h1 className="text-2xl font-bold text-gray-900 mb-2 tracking-tight">
+                Добро пожаловать в Fin<span className="text-indigo-600">Peak</span>!
+              </h1>
               <p className="text-gray-500 mb-2">Финансовая аналитика для малого бизнеса в Казахстане</p>
               <p className="text-sm text-gray-400 mb-8 max-w-md mx-auto">
                 За пару минут мы настроим вашу систему: загрузим первую выписку, создадим счет и покажем дашборд.

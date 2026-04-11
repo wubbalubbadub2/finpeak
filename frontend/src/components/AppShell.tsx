@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { Sidebar } from "./Sidebar";
 import { useAuth } from "./AuthProvider";
+import { LogoMark } from "./Logo";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -35,8 +36,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     <div className="min-h-full">
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      {/* Mobile top header */}
-      <header className="md:hidden sticky top-0 z-30 flex items-center justify-between bg-white border-b border-gray-200 px-4 h-14">
+      {/* Top header for mobile + tablet (< lg / 1024px) */}
+      <header className="lg:hidden sticky top-0 z-30 flex items-center justify-between bg-white border-b border-gray-200 px-4 h-14">
         <button
           type="button"
           onClick={() => setSidebarOpen(true)}
@@ -46,16 +47,16 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <Menu size={20} />
         </button>
         <div className="flex items-center gap-2">
-          <div className="flex items-center justify-center w-7 h-7 rounded-md bg-indigo-600">
-            <span className="text-white font-bold text-[10px]">KZ</span>
-          </div>
-          <span className="text-sm font-bold text-gray-800">KZ Finance</span>
+          <LogoMark size={28} />
+          <span className="text-sm font-bold text-gray-900 tracking-tight">
+            Fin<span className="text-indigo-600">Peak</span>
+          </span>
         </div>
         {/* Spacer to keep the logo centered */}
         <div className="w-9" aria-hidden />
       </header>
 
-      <main className="md:ml-64 p-4 md:p-6 overflow-y-auto">{children}</main>
+      <main className="lg:ml-60 p-4 lg:p-6 overflow-y-auto">{children}</main>
     </div>
   );
 }

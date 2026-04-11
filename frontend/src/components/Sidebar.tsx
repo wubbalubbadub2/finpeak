@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LayoutDashboard, Upload, List, Tags, FileBarChart, Sparkles, Users, LogOut, X, Wallet } from "lucide-react";
 import { useAuth } from "./AuthProvider";
+import { LogoMark } from "./Logo";
 
 const NAV = [
   { href: "/", label: "Дашборд", icon: LayoutDashboard },
@@ -31,34 +32,34 @@ export function Sidebar({ open = false, onClose }: { open?: boolean; onClose?: (
 
   return (
     <>
-      {/* Backdrop (mobile only) */}
+      {/* Backdrop (mobile + tablet only) */}
       <div
         onClick={onClose}
-        className={`fixed inset-0 bg-black/40 z-40 md:hidden transition-opacity ${
+        className={`fixed inset-0 bg-black/40 z-40 lg:hidden transition-opacity ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         aria-hidden={!open}
       />
 
       <aside
-        className={`fixed left-0 top-0 h-full w-64 bg-white border-r border-gray-200 flex flex-col z-50 transform transition-transform duration-200 ease-out ${
+        className={`fixed left-0 top-0 h-full w-60 bg-white border-r border-gray-200 flex flex-col z-50 transform transition-transform duration-200 ease-out ${
           open ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0`}
+        } lg:translate-x-0`}
       >
         {/* Logo */}
-        <div className="flex items-center gap-3 px-6 py-5">
-          <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-indigo-600">
-            <span className="text-white font-bold text-sm">KZ</span>
-          </div>
+        <div className="flex items-center gap-3 px-5 py-5">
+          <LogoMark size={36} />
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-bold text-gray-800">KZ Finance</p>
+            <p className="text-sm font-bold text-gray-900 tracking-tight">
+              Fin<span className="text-indigo-600">Peak</span>
+            </p>
             <p className="text-xs text-gray-400">Финансовая аналитика</p>
           </div>
-          {/* Close button on mobile */}
+          {/* Close button on mobile + tablet */}
           <button
             type="button"
             onClick={onClose}
-            className="md:hidden p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100"
+            className="lg:hidden p-1.5 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100"
             aria-label="Закрыть меню"
           >
             <X size={18} />
