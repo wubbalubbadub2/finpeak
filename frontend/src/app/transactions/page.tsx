@@ -56,11 +56,11 @@ export default function TransactionsPage() {
           <table className="w-full min-w-full">
             <thead>
               <tr className="border-b border-gray-100 bg-gray-50/50">
-                <th className="text-left px-5 py-3.5 text-xs font-medium text-gray-500 uppercase tracking-wider">Дата</th>
-                <th className="text-right px-5 py-3.5 text-xs font-medium text-gray-500 uppercase tracking-wider">Сумма</th>
-                <th className="text-left px-5 py-3.5 text-xs font-medium text-gray-500 uppercase tracking-wider">Контрагент</th>
-                <th className="text-left px-5 py-3.5 text-xs font-medium text-gray-500 uppercase tracking-wider">Описание</th>
-                <th className="text-left px-5 py-3.5 text-xs font-medium text-gray-500 uppercase tracking-wider">Категория</th>
+                <th className="text-left px-3 md:px-5 py-3 md:py-3.5 text-[10px] md:text-xs font-medium text-gray-500 uppercase tracking-wider">Дата</th>
+                <th className="text-right px-3 md:px-5 py-3 md:py-3.5 text-[10px] md:text-xs font-medium text-gray-500 uppercase tracking-wider">Сумма</th>
+                <th className="text-left px-3 md:px-5 py-3 md:py-3.5 text-[10px] md:text-xs font-medium text-gray-500 uppercase tracking-wider">Контрагент</th>
+                <th className="hidden md:table-cell text-left px-5 py-3.5 text-xs font-medium text-gray-500 uppercase tracking-wider">Описание</th>
+                <th className="text-left px-3 md:px-5 py-3 md:py-3.5 text-[10px] md:text-xs font-medium text-gray-500 uppercase tracking-wider">Категория</th>
               </tr>
             </thead>
             <tbody>
@@ -70,16 +70,16 @@ export default function TransactionsPage() {
                 <tr><td colSpan={5} className="py-16 text-center text-sm text-gray-400">Транзакции не найдены</td></tr>
               ) : txs.map((tx) => (
                 <tr key={tx.id} className="border-b border-gray-50 hover:bg-gray-50/80 transition-colors">
-                  <td className="px-5 py-3 text-sm text-gray-500 whitespace-nowrap font-mono">{tx.date}</td>
-                  <td className="px-5 py-3 text-right whitespace-nowrap">
-                    <span className={`text-sm font-semibold font-mono ${tx.signed_amount >= 0 ? "text-emerald-600" : "text-gray-800"}`}>
+                  <td className="px-3 md:px-5 py-3 text-xs md:text-sm text-gray-500 whitespace-nowrap font-mono">{tx.date}</td>
+                  <td className="px-3 md:px-5 py-3 text-right whitespace-nowrap">
+                    <span className={`text-xs md:text-sm font-semibold font-mono ${tx.signed_amount >= 0 ? "text-emerald-600" : "text-gray-800"}`}>
                       {fmtAmt(tx.signed_amount)}
                     </span>
-                    <span className="text-xs text-gray-400 ml-0.5">₸</span>
+                    <span className="text-[10px] md:text-xs text-gray-400 ml-0.5">₸</span>
                   </td>
-                  <td className="px-5 py-3 text-sm text-gray-700 max-w-[200px] truncate">{tx.counterparty}</td>
-                  <td className="px-5 py-3 text-sm text-gray-500 max-w-[260px] truncate">{tx.payment_description}</td>
-                  <td className="px-5 py-3">
+                  <td className="px-3 md:px-5 py-3 text-xs md:text-sm text-gray-700 max-w-[140px] md:max-w-[200px] truncate">{tx.counterparty}</td>
+                  <td className="hidden md:table-cell px-5 py-3 text-sm text-gray-500 max-w-[260px] truncate">{tx.payment_description}</td>
+                  <td className="px-3 md:px-5 py-3">
                     {editId === tx.id ? (
                       <select autoFocus value={tx.category_name || ""} onChange={e => onCat(tx.id, e.target.value)} onBlur={() => setEditId(null)}
                         className="text-xs rounded-lg border border-indigo-300 bg-white px-2 py-1.5 outline-none focus:ring-2 focus:ring-indigo-100 w-full max-w-[200px]">

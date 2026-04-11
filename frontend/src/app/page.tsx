@@ -87,7 +87,7 @@ export default function DashboardPage() {
       </div>
 
       {/* KPI Strip - 4 cards focused on CURRENT state */}
-      <div className="grid grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6">
         <KPICard
           label="Текущий баланс"
           value={fmt(runway.balance || 0)}
@@ -164,7 +164,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Two-column layout: Account balances + Alerts */}
-      <div className="grid grid-cols-2 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         {/* Account balances */}
         <div className="rounded-2xl border border-gray-200 bg-white overflow-hidden">
           <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
@@ -259,28 +259,30 @@ export default function DashboardPage() {
             Все транзакции <ChevronRight size={12} />
           </Link>
         </div>
-        <table className="w-full text-sm">
-          <tbody>
-            {recent.map((tx, i) => (
-              <tr key={tx.id} className={`border-b border-gray-50 ${i === recent.length - 1 ? "border-b-0" : ""} hover:bg-gray-50/50`}>
-                <td className="px-5 py-3 text-xs text-gray-500 font-mono whitespace-nowrap w-24">{tx.date}</td>
-                <td className="px-5 py-3 text-sm text-gray-700 max-w-[220px] truncate">{tx.counterparty}</td>
-                <td className="px-5 py-3">
-                  <span className="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">
-                    {tx.category_name || "—"}
-                  </span>
-                </td>
-                <td className={`px-5 py-3 text-right text-sm font-semibold tabular-nums whitespace-nowrap ${tx.signed_amount >= 0 ? "text-emerald-600" : "text-gray-800"}`}>
-                  {tx.signed_amount >= 0 ? "+" : ""}{fmt(tx.signed_amount)} <span className="text-[10px] text-gray-400">₸</span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className="overflow-x-auto">
+          <table className="w-full text-xs md:text-sm">
+            <tbody>
+              {recent.map((tx, i) => (
+                <tr key={tx.id} className={`border-b border-gray-50 ${i === recent.length - 1 ? "border-b-0" : ""} hover:bg-gray-50/50`}>
+                  <td className="px-3 md:px-5 py-3 text-[11px] md:text-xs text-gray-500 font-mono whitespace-nowrap w-24">{tx.date}</td>
+                  <td className="px-3 md:px-5 py-3 text-xs md:text-sm text-gray-700 max-w-[140px] md:max-w-[220px] truncate">{tx.counterparty}</td>
+                  <td className="px-3 md:px-5 py-3 hidden md:table-cell">
+                    <span className="inline-flex items-center rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600">
+                      {tx.category_name || "—"}
+                    </span>
+                  </td>
+                  <td className={`px-3 md:px-5 py-3 text-right text-xs md:text-sm font-semibold tabular-nums whitespace-nowrap ${tx.signed_amount >= 0 ? "text-emerald-600" : "text-gray-800"}`}>
+                    {tx.signed_amount >= 0 ? "+" : ""}{fmt(tx.signed_amount)} <span className="text-[10px] text-gray-400">₸</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* Quick links */}
-      <div className="grid grid-cols-3 gap-3 mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-6">
         <QuickLink href="/reports" icon={<FileBarChart size={16} />} label="Управленческие отчеты" desc="ДДС, P&L, Аналитика" />
         <QuickLink href="/insights" icon={<Sparkles size={16} />} label="AI Прогноз" desc="Аномалии и тренды" />
         <QuickLink href="/upload" icon={<ArrowUpRight size={16} />} label="Загрузить выписку" desc="Добавить новые данные" />

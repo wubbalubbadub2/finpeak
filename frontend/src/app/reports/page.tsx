@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { getCashFlow, getPnL, getExpenseAnalytics } from "@/lib/api";
 import { BarChart3, TrendingUp, PieChart, ArrowUp, ArrowDown } from "lucide-react";
+import { DateRangePicker, DEFAULT_RANGE, type DateRange } from "@/components/DateRangePicker";
 
 function fmt(n: number) { return new Intl.NumberFormat("ru-RU", { maximumFractionDigits: 0 }).format(n); }
 
@@ -14,6 +15,7 @@ const TABS = [
 
 export default function ReportsPage() {
   const [tab, setTab] = useState("cashflow");
+  const [range, setRange] = useState<DateRange>(DEFAULT_RANGE);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -22,23 +24,26 @@ export default function ReportsPage() {
     setLoading(true);
     setData(null);
     const fetcher = { cashflow: getCashFlow, pnl: getPnL, expenses: getExpenseAnalytics }[tab as "cashflow" | "pnl" | "expenses"];
-    if (fetcher) fetcher().then(setData).catch(console.error).finally(() => setLoading(false));
-  }, [tab]);
+    if (fetcher) fetcher({ date_from: range.date_from, date_to: range.date_to }).then(setData).catch(console.error).finally(() => setLoading(false));
+  }, [tab, range]);
 
   return (
     <div className="max-w-[1120px]">
-      <div className="mb-5">
-        <h1 className="text-xl font-bold text-gray-800">Отчеты</h1>
-        <p className="text-sm text-gray-400 mt-1">Управленческая отчетность</p>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
+        <div>
+          <h1 className="text-xl font-bold text-gray-800">Отчеты</h1>
+          <p className="text-sm text-gray-400 mt-1">Управленческая отчетность</p>
+        </div>
+        <DateRangePicker value={range} onChange={setRange} />
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 mb-5 border-b border-gray-200">
+      <div className="flex gap-1 mb-5 border-b border-gray-200 overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0">
         {TABS.map(({ id, label, icon: Icon }) => (
           <button
             key={id}
             onClick={() => setTab(id)}
-            className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium border-b-2 transition-colors -mb-px ${
+            className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium border-b-2 transition-colors -mb-px whitespace-nowrap ${
               tab === id
                 ? "border-indigo-600 text-indigo-600"
                 : "border-transparent text-gray-500 hover:text-gray-700"
@@ -233,7 +238,7 @@ function ExpensesTab({ data }: { data: any }) {
   return (
     <div className="space-y-4">
       {/* Summary cards */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="rounded-2xl border border-gray-200 bg-white p-5">
           <p className="text-sm text-gray-500">Общая выручка</p>
           <p className="text-2xl font-bold text-emerald-600 mt-1">{fmt(data.total_revenue)} <span className="text-base font-normal text-gray-400">₸</span></p>
@@ -244,13 +249,14 @@ function ExpensesTab({ data }: { data: any }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         {/* By category */}
-        <div className="col-span-3 rounded-2xl border border-gray-200 bg-white overflow-hidden">
+        <div className="md:col-span-3 rounded-2xl border border-gray-200 bg-white overflow-hidden">
           <div className="px-5 py-4 border-b border-gray-100">
             <h3 className="text-sm font-semibold text-gray-800">Расходы по категориям</h3>
             <p className="text-xs text-gray-400 mt-0.5">% от выручки</p>
           </div>
+          <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gray-100 bg-gray-50/50">
@@ -275,10 +281,11 @@ function ExpensesTab({ data }: { data: any }) {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
 
         {/* Top counterparties */}
-        <div className="col-span-2 rounded-2xl border border-gray-200 bg-white overflow-hidden">
+        <div className="md:col-span-2 rounded-2xl border border-gray-200 bg-white overflow-hidden">
           <div className="px-5 py-4 border-b border-gray-100">
             <h3 className="text-sm font-semibold text-gray-800">Топ контрагенты</h3>
             <p className="text-xs text-gray-400 mt-0.5">По объему расходов</p>
@@ -307,6 +314,7 @@ function ExpensesTab({ data }: { data: any }) {
           <div className="px-5 py-4 border-b border-gray-100">
             <h3 className="text-sm font-semibold text-gray-800">Изменения месяц к месяцу</h3>
           </div>
+          <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gray-100 bg-gray-50/50">
@@ -335,6 +343,7 @@ function ExpensesTab({ data }: { data: any }) {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
     </div>

@@ -25,6 +25,7 @@ export function useAuth() {
 }
 
 const PUBLIC_PATHS = ["/login"];
+const ONBOARDING_PATH = "/onboarding";
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
@@ -64,12 +65,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (loading) return;
     const isPublic = PUBLIC_PATHS.includes(pathname);
+    const isOnboarding = pathname === ONBOARDING_PATH;
+
     if (!session && !isPublic) {
       router.push("/login");
-    } else if (session && isPublic) {
-      router.push("/");
+      return;
     }
-  }, [session, loading, pathname, router]);
+    if (session && isPublic) {
+      router.push("/");
+      return;
+    }
+    // Force new users (not yet onboarded) into the onboarding flow
+    if (session && user && user.onboarded === false && !isOnboarding && !isPublic) {
+      router.push(ONBOARDING_PATH);
+    }
+  }, [session, user, loading, pathname, router]);
 
   const signOut = async () => {
     await supabase.auth.signOut();

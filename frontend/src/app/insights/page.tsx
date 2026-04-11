@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { getInsights } from "@/lib/api";
 import { Sparkles, AlertTriangle, ArrowUp, ArrowDown, Wallet, TrendingUp, Flame, Clock } from "lucide-react";
+import { DateRangePicker, DEFAULT_RANGE, type DateRange } from "@/components/DateRangePicker";
 
 function fmt(n: number) { return new Intl.NumberFormat("ru-RU", { maximumFractionDigits: 0 }).format(n); }
 
@@ -10,10 +11,12 @@ export default function InsightsPage() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [range, setRange] = useState<DateRange>(DEFAULT_RANGE);
 
   useEffect(() => {
-    getInsights().then(setData).catch(console.error).finally(() => setLoading(false));
-  }, []);
+    setLoading(true);
+    getInsights({ date_from: range.date_from, date_to: range.date_to }).then(setData).catch(console.error).finally(() => setLoading(false));
+  }, [range]);
 
   if (loading) return <div className="flex items-center justify-center h-64"><div className="w-6 h-6 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" /></div>;
   if (!data) return <p className="text-sm text-gray-400 py-12 text-center">Нет данных</p>;
@@ -22,18 +25,21 @@ export default function InsightsPage() {
 
   return (
     <div className="max-w-[1120px]">
-      <div className="mb-5 flex items-center gap-3">
-        <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-indigo-50">
-          <Sparkles size={20} className="text-indigo-600" />
+      <div className="mb-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-indigo-50">
+            <Sparkles size={20} className="text-indigo-600" />
+          </div>
+          <div>
+            <h1 className="text-xl font-bold text-gray-800">AI Прогноз</h1>
+            <p className="text-sm text-gray-400 mt-0.5">Аномалии, тренды и финансовая прогнозная аналитика</p>
+          </div>
         </div>
-        <div>
-          <h1 className="text-xl font-bold text-gray-800">AI Прогноз</h1>
-          <p className="text-sm text-gray-400 mt-0.5">Аномалии, тренды и финансовая прогнозная аналитика</p>
-        </div>
+        <DateRangePicker value={range} onChange={setRange} />
       </div>
 
       {/* Cash Runway KPIs */}
-      <div className="grid grid-cols-4 gap-4 mb-5">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-5">
         <RunwayCard icon={<Wallet size={18} />} iconBg="bg-emerald-50" iconColor="text-emerald-600" label="Текущий баланс" value={fmt(runway.balance)} suffix="₸" valueClass={runway.balance >= 0 ? "text-emerald-600" : "text-red-600"} />
         <RunwayCard icon={<TrendingUp size={18} />} iconBg="bg-indigo-50" iconColor="text-indigo-600" label="Ср. месячный нетто" value={fmt(runway.avg_monthly_net)} suffix="₸" valueClass={runway.avg_monthly_net >= 0 ? "text-emerald-600" : "text-red-600"} />
         <RunwayCard icon={<Flame size={18} />} iconBg="bg-orange-50" iconColor="text-orange-600" label="Ср. расход / мес" value={fmt(runway.burn_rate)} suffix="₸" valueClass="text-gray-800" />
@@ -48,6 +54,7 @@ export default function InsightsPage() {
             <h3 className="text-sm font-semibold text-amber-800">Обнаружены аномалии</h3>
             <span className="ml-auto text-xs text-amber-600">{data.anomalies.length} операций требуют внимания</span>
           </div>
+          <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gray-100 bg-gray-50/50">
@@ -73,6 +80,7 @@ export default function InsightsPage() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       ) : (
         <div className="rounded-2xl border border-emerald-200 bg-emerald-50/30 p-5 mb-5 flex items-center gap-3">
@@ -93,6 +101,7 @@ export default function InsightsPage() {
             <h3 className="text-sm font-semibold text-gray-800">Изменения трендов</h3>
             <p className="text-xs text-gray-400 mt-0.5">Категории с изменением более 20% месяц к месяцу</p>
           </div>
+          <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gray-100 bg-gray-50/50">
@@ -121,6 +130,7 @@ export default function InsightsPage() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       ) : (
         <div className="rounded-2xl border border-gray-200 bg-white p-12 text-center">

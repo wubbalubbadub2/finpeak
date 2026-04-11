@@ -37,7 +37,7 @@ export default function UploadPage() {
         onDragOver={e => { e.preventDefault(); setDragging(true); }}
         onDragLeave={() => setDragging(false)}
         onDrop={e => { e.preventDefault(); setDragging(false); const f = e.dataTransfer.files[0]; if (f) handle(f); }}
-        className={`rounded-2xl border-2 border-dashed p-12 text-center transition-all ${
+        className={`rounded-2xl border-2 border-dashed p-6 md:p-12 text-center transition-all ${
           dragging ? "border-indigo-400 bg-indigo-50" : "border-gray-200 bg-white hover:border-gray-300"
         }`}
       >
@@ -80,7 +80,7 @@ export default function UploadPage() {
                 <p className="text-xs text-gray-400">{result.filename}</p>
               </div>
             </div>
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {([
                 ["Банк", result.bank.toUpperCase()],
                 ["Клиент", result.client_name || "—"],
@@ -100,6 +100,7 @@ export default function UploadPage() {
             <div className="px-5 py-3.5 border-b border-gray-100">
               <p className="text-sm font-semibold text-gray-700">Транзакции ({result.transactions.length})</p>
             </div>
+            <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-100 bg-gray-50/50">
@@ -130,6 +131,7 @@ export default function UploadPage() {
                 ))}
               </tbody>
             </table>
+            </div>
           </div>
         </div>
       )}

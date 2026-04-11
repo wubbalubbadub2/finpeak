@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import secrets
+from datetime import datetime
 from pathlib import Path
 
 import httpx
@@ -30,6 +31,7 @@ class UserOut(BaseModel):
     name: str
     email: str | None
     role: str
+    onboarded: bool = False
     created_at: str | None = None
 
 
@@ -41,8 +43,20 @@ def auth_me(org: Organization = Depends(get_current_user)):
         name=org.name,
         email=org.email,
         role=org.role,
+        onboarded=org.onboarded_at is not None,
         created_at=org.created_at.isoformat() if org.created_at else None,
     )
+
+
+@router.post("/auth/complete-onboarding")
+def complete_onboarding(
+    org: Organization = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """Mark current user as having completed onboarding."""
+    org.onboarded_at = datetime.utcnow()
+    db.commit()
+    return {"ok": True}
 
 
 @router.get("/users", response_model=list[UserOut])

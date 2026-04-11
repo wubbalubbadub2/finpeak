@@ -226,7 +226,7 @@ export default function CategoriesPage() {
       <div className="space-y-4">
         {/* Rules section */}
         <div className="rounded-2xl border border-gray-200 bg-white overflow-hidden">
-          <div className="px-5 py-4 border-b border-gray-100 bg-gray-50/50 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="px-5 py-4 border-b border-gray-100 bg-gray-50/50 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div>
               <span className="text-sm font-semibold text-gray-800">
                 Правила категоризации
@@ -241,14 +241,14 @@ export default function CategoriesPage() {
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              <div className="relative">
+              <div className="relative flex-1 md:flex-none min-w-0">
                 <Search className="w-4 h-4 text-gray-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Поиск правил..."
-                  className="pl-8 pr-3 py-1.5 text-sm rounded-lg border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-400 w-56"
+                  className="pl-8 pr-3 py-1.5 text-sm rounded-lg border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-400 w-full md:w-56"
                 />
               </div>
               <select
@@ -275,8 +275,8 @@ export default function CategoriesPage() {
 
           {showAdd && (
             <div className="px-5 py-4 border-b border-gray-100 bg-indigo-50/30">
-              <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-end">
-                <div className="sm:col-span-3">
+              <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-end">
+                <div className="md:col-span-3">
                   <label className="text-xs font-medium text-gray-500 block mb-1">
                     Поле
                   </label>
@@ -291,7 +291,7 @@ export default function CategoriesPage() {
                     <option value="counterparty">Контрагент</option>
                   </select>
                 </div>
-                <div className="sm:col-span-4">
+                <div className="md:col-span-4">
                   <label className="text-xs font-medium text-gray-500 block mb-1">
                     Паттерн
                   </label>
@@ -305,7 +305,7 @@ export default function CategoriesPage() {
                     className="w-full py-1.5 px-2 text-sm rounded-lg border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-400 font-mono"
                   />
                 </div>
-                <div className="sm:col-span-3">
+                <div className="md:col-span-3">
                   <label className="text-xs font-medium text-gray-500 block mb-1">
                     Категория
                   </label>
@@ -324,7 +324,7 @@ export default function CategoriesPage() {
                     ))}
                   </select>
                 </div>
-                <div className="sm:col-span-2 flex gap-2 justify-end">
+                <div className="md:col-span-2 flex gap-2 justify-end">
                   <button
                     type="button"
                     onClick={cancelAdd}
@@ -526,6 +526,7 @@ export default function CategoriesPage() {
               <span className="text-sm font-semibold text-gray-800">{type}</span>
               <span className="text-xs text-gray-400 ml-2">({items.length})</span>
             </div>
+            <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-100">
@@ -573,6 +574,7 @@ export default function CategoriesPage() {
                 ))}
               </tbody>
             </table>
+            </div>
           </div>
         ))}
       </div>

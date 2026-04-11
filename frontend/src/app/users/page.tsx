@@ -79,14 +79,14 @@ export default function UsersPage() {
 
   return (
     <div className="max-w-[1000px]">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
         <div>
           <h1 className="text-xl font-bold text-gray-800">Пользователи</h1>
           <p className="text-sm text-gray-400 mt-1">Управление аккаунтами клиентов</p>
         </div>
         <button
           onClick={() => setShowAdd(true)}
-          className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-700"
+          className="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-700 w-full sm:w-auto"
         >
           <Plus size={15} /> Добавить пользователя
         </button>
@@ -143,7 +143,7 @@ export default function UsersPage() {
               <X size={16} />
             </button>
           </div>
-          <form onSubmit={handleCreate} className="grid grid-cols-3 gap-3">
+          <form onSubmit={handleCreate} className="grid grid-cols-1 md:grid-cols-3 gap-3">
             <div>
               <label className="block text-xs text-gray-600 mb-1">Имя / Компания</label>
               <input
@@ -176,7 +176,7 @@ export default function UsersPage() {
                 className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm outline-none focus:border-indigo-300 focus:ring-2 focus:ring-indigo-100"
               />
             </div>
-            <div className="col-span-3 flex justify-end gap-2 mt-2">
+            <div className="md:col-span-3 flex justify-end gap-2 mt-2">
               <button
                 type="button"
                 onClick={() => setShowAdd(false)}
@@ -210,6 +210,7 @@ export default function UsersPage() {
         ) : users.length === 0 ? (
           <p className="py-12 text-center text-sm text-gray-400">Нет пользователей</p>
         ) : (
+          <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="border-b border-gray-100 bg-gray-50/50">
@@ -247,6 +248,7 @@ export default function UsersPage() {
               ))}
             </tbody>
           </table>
+          </div>
         )}
       </div>
     </div>

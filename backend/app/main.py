@@ -5,7 +5,7 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .routers import upload, transactions, categories, reports, sheets, users
+from .routers import upload, transactions, categories, reports, sheets, users, wallets
 
 app = FastAPI(title="KZ Finance API", version="2.0.0")
 
@@ -35,6 +35,7 @@ app.include_router(categories.router, prefix="/api")
 app.include_router(reports.router, prefix="/api")
 app.include_router(sheets.router, prefix="/api")
 app.include_router(users.router, prefix="/api")
+app.include_router(wallets.router, prefix="/api")
 
 
 @app.get("/api/health")

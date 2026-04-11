@@ -135,14 +135,27 @@ export async function deleteRule(id: string): Promise<void> {
   await request(`/rules/${id}`, { method: "DELETE" });
 }
 
+export interface DateRange {
+  date_from?: string;
+  date_to?: string;
+}
+
+function rangeQuery(range?: DateRange): string {
+  const sp = new URLSearchParams();
+  if (range?.date_from) sp.set("date_from", range.date_from);
+  if (range?.date_to) sp.set("date_to", range.date_to);
+  const s = sp.toString();
+  return s ? `?${s}` : "";
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export async function getCashFlow(): Promise<any> { return request("/reports/cashflow"); }
+export async function getCashFlow(range?: DateRange): Promise<any> { return request(`/reports/cashflow${rangeQuery(range)}`); }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export async function getPnL(): Promise<any> { return request("/reports/pnl"); }
+export async function getPnL(range?: DateRange): Promise<any> { return request(`/reports/pnl${rangeQuery(range)}`); }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export async function getExpenseAnalytics(): Promise<any> { return request("/reports/expenses"); }
+export async function getExpenseAnalytics(range?: DateRange): Promise<any> { return request(`/reports/expenses${rangeQuery(range)}`); }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export async function getInsights(): Promise<any> { return request("/reports/insights"); }
+export async function getInsights(range?: DateRange): Promise<any> { return request(`/reports/insights${rangeQuery(range)}`); }
 
 export async function exportCSV(params?: {
   date_from?: string;
@@ -162,6 +175,59 @@ export async function exportCSV(params?: {
   URL.revokeObjectURL(url);
 }
 
+// --- Wallets ---
+
+export interface WalletOut {
+  id: string;
+  account_number: string;
+  bank: string;
+  wallet_name: string | null;
+  currency: string;
+  opening_balance: number;
+  is_archived: boolean;
+  transaction_count: number;
+  current_balance: number;
+}
+
+export interface WalletUpdateInput {
+  wallet_name?: string;
+  opening_balance?: number;
+  is_archived?: boolean;
+  currency?: string;
+}
+
+export interface WalletCreateInput {
+  account_number: string;
+  bank: string;
+  wallet_name: string;
+  currency?: string;
+  opening_balance?: number;
+}
+
+export async function getWallets(includeArchived = false): Promise<WalletOut[]> {
+  return request<WalletOut[]>(`/wallets?include_archived=${includeArchived}`);
+}
+
+export async function createWallet(data: WalletCreateInput): Promise<WalletOut> {
+  return request<WalletOut>("/wallets", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+}
+
+export async function updateWallet(id: string, data: WalletUpdateInput): Promise<WalletOut> {
+  return request<WalletOut>(`/wallets/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+}
+
+export async function deleteWallet(id: string): Promise<void> {
+  await request(`/wallets/${id}`, { method: "DELETE" });
+}
+
 // --- Auth & user management ---
 
 export interface UserOut {
@@ -169,7 +235,12 @@ export interface UserOut {
   name: string;
   email: string | null;
   role: string;
+  onboarded?: boolean;
   created_at?: string | null;
+}
+
+export async function completeOnboarding(): Promise<void> {
+  await request("/auth/complete-onboarding", { method: "POST" });
 }
 
 export async function getCurrentUser(): Promise<UserOut> {

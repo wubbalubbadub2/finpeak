@@ -29,6 +29,7 @@ class Organization(Base):
     supabase_user_id = Column(String(36), unique=True, index=True, nullable=True)
     email = Column(String(255), unique=True, index=True, nullable=True)
     role = Column(String(20), default="user")  # "super_admin" or "user"
+    onboarded_at = Column(DateTime, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
     bank_accounts = relationship("BankAccount", back_populates="organization", cascade="all, delete-orphan")
@@ -47,6 +48,8 @@ class BankAccount(Base):
     client_bin = Column(String(12))
     currency = Column(String(3), default="KZT")
     wallet_name = Column(String(255))
+    opening_balance = Column(Numeric(15, 2), default=0)  # User-set opening balance
+    is_archived = Column(Boolean, default=False)
     created_at = Column(DateTime, default=datetime.utcnow)
 
     organization = relationship("Organization", back_populates="bank_accounts")
