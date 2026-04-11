@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Upload, List, Tags, FileBarChart, Sparkles, Users, LogOut, X, Wallet } from "lucide-react";
+import { LayoutDashboard, Upload, List, Tags, FileBarChart, Sparkles, Users, LogOut, X, Wallet, Target } from "lucide-react";
 import { useAuth } from "./AuthProvider";
 import { LogoMark } from "./Logo";
 
 const NAV = [
   { href: "/", label: "Дашборд", icon: LayoutDashboard },
   { href: "/reports", label: "Отчеты", icon: FileBarChart },
+  { href: "/budgets", label: "Бюджеты", icon: Target },
   { href: "/insights", label: "AI Прогноз", icon: Sparkles },
   { href: "/upload", label: "Загрузка", icon: Upload },
   { href: "/transactions", label: "Транзакции", icon: List },

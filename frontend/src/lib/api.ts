@@ -175,6 +175,53 @@ export async function exportCSV(params?: {
   URL.revokeObjectURL(url);
 }
 
+// --- Budgets ---
+
+export interface BudgetRow {
+  id: string | null;
+  category_id: string;
+  category_name: string;
+  category_group: string;
+  activity_type: string;
+  period: string;
+  budget: number;
+  actual: number;
+  diff: number;
+  pct_used: number;
+}
+
+export interface BudgetSummary {
+  period: string;
+  rows: BudgetRow[];
+  total_budget: number;
+  total_actual: number;
+  total_diff: number;
+}
+
+export async function getBudgets(period: string): Promise<BudgetSummary> {
+  return request<BudgetSummary>(`/budgets?period=${period}`);
+}
+
+export async function upsertBudget(data: { category_id: string; period: string; amount: number }): Promise<BudgetRow> {
+  return request<BudgetRow>("/budgets", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+}
+
+export async function deleteBudget(id: string): Promise<void> {
+  await request(`/budgets/${id}`, { method: "DELETE" });
+}
+
+export async function copyBudgets(from_period: string, to_period: string): Promise<{ copied: number }> {
+  return request("/budgets/copy", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ from_period, to_period }),
+  });
+}
+
 // --- Wallets ---
 
 export interface WalletOut {

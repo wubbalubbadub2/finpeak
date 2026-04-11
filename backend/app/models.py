@@ -126,6 +126,24 @@ class CategorizationRule(Base):
     category = relationship("Category")
 
 
+class Budget(Base):
+    __tablename__ = "budgets"
+
+    id = Column(String(36), primary_key=True, default=_uuid)
+    organization_id = Column(String(36), ForeignKey("organizations.id"), nullable=False)
+    category_id = Column(String(36), ForeignKey("categories.id"), nullable=False)
+    category_name = Column(String(255))  # denormalized
+    period = Column(String(7), nullable=False)  # "YYYY-MM"
+    amount = Column(Numeric(15, 2), nullable=False, default=0)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow)
+
+    __table_args__ = (
+        Index("ix_budgets_org_period", "organization_id", "period"),
+        Index("ix_budgets_unique", "organization_id", "category_id", "period", unique=True),
+    )
+
+
 class UploadedFile(Base):
     __tablename__ = "uploaded_files"
 
